@@ -2,7 +2,7 @@ class CreateMirrors < ActiveRecord::Migration
   def self.up
     create_table :mirrors do |t|
       t.string :url
-      t.integer :key
+      t.string :key
       t.timestamps
     end
   end

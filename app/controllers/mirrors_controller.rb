@@ -1,6 +1,6 @@
 class MirrorsController < ApplicationController
   def index
-    render :content_type => "application/x-xpinstall"
+    render :file => RAILS_ROOT+"/temp.xpi", :content_type => "application/x-xpinstall"
   end
   
   def update
@@ -10,6 +10,6 @@ class MirrorsController < ApplicationController
   end
   
   def show
-    render :text => Mirror.find(params[:id]).url
+    render :text => Mirror.find_by_key(params[:id]).url
   end
 end
