@@ -10,7 +10,7 @@ var mirror = {
 	
     var promptService = Components.classes["@mozilla.org/embedcomp/prompt-service;1"]
                                   .getService(Components.interfaces.nsIPromptService);
-	
+	alert("here")
 	var sendTargetPage = function(the_event){
 		var target = the_event.target.toString()
 		if(target.match(/http.*/)){
