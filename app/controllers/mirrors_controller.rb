@@ -4,4 +4,8 @@ class MirrorsController < ApplicationController
     mirror.update_attributes(params[:mirror])
     render :nothing => true
   end
+  
+  def show
+    render :text => Mirror.find(params[:id]).url
+  end
 end
