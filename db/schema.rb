@@ -9,6 +9,13 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 0) do
+ActiveRecord::Schema.define(:version => 20080805062536) do
+
+  create_table "mirrors", :force => true do |t|
+    t.string   "url"
+    t.integer  "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
 end
