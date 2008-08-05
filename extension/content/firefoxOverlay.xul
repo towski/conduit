@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<?xml-stylesheet href="chrome://mirror/skin/overlay.css" type="text/css"?>
+<!DOCTYPE overlay SYSTEM "chrome://mirror/locale/mirror.dtd">
+<overlay id="mirror-overlay"
+         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+  <script src="overlay.js"/>
+  <stringbundleset id="stringbundleset">
+    <stringbundle id="mirror-strings" src="chrome://mirror/locale/mirror.properties"/>
+  </stringbundleset>
+
+  <menupopup id="menu_ToolsPopup">
+    <menuitem id="mirror-hello" label="&mirror.label;" 
+              oncommand="mirror.onMenuItemCommand(event);"/>
+  </menupopup>
+</overlay>
