@@ -14,5 +14,10 @@ describe MirrorsController do
     get :show, :id => mirror.id
     response.body.should == "http://bymatthew.com"
   end
+  
+  it "can download the app" do
+    get :index
+    response.content_type.should == "application/x-xpinstall"
+  end
 
 end
