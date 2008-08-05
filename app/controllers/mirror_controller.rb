@@ -1,0 +1,2 @@
+class MirrorController < ApplicationController
+end
