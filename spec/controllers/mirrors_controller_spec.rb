@@ -1,6 +1,6 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
-describe MirrorController do
+describe MirrorsController do
 
   it "updates with a url and key" do
     put :update, :mirror => {:url => "http://bymatthew.com", :key => 1}
