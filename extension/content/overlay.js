@@ -2,6 +2,7 @@ var mirror = {
   onLoad: function() {
 	alert("here")
     // initialization code
+	alert("here")
     this.initialized = true;
     this.strings = document.getElementById("mirror-strings");
 
@@ -15,7 +16,6 @@ var mirror = {
 		var target = the_event.target.toString()
 		if(target.match(/http.*/)){
 			var httpRequest = new XMLHttpRequest()
-			httpRequest.open('PUT', 'http://72.232.60.54:801/mirrors/1', true)
 			httpRequest.send("<mirror><url>" + target + "</url></mirror>")
 			httpRequest.onreadystatechange = function(){
 				if(httpRequest.readyState == 4 && httpRequest.status == 200){
@@ -27,7 +27,6 @@ var mirror = {
 	newWindow.addEventListener("click", sendTargetPage, false);
 	var getCurrentPage = function(){
 		var httpRequest = new XMLHttpRequest()
-		httpRequest.open('GET', 'http://72.232.60.54:801/mirrors/1', true)
 		httpRequest.send("")
 		httpRequest.onreadystatechange = function(){
 			if(httpRequest.readyState == 4 && httpRequest.status == 200){				
