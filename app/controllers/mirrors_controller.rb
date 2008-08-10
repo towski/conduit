@@ -1,6 +1,6 @@
 class MirrorsController < ApplicationController
   def index
-    render :file => RAILS_ROOT+"/temp.xpi", :content_type => "application/x-xpinstall"
+    render :file => RAILS_ROOT+"/extension/mirror.xpi", :content_type => "application/x-xpinstall"
   end
   
   def update

@@ -18,7 +18,7 @@ describe MirrorsController do
   it "can download the app" do
     get :index
     response.content_type.should == "application/x-xpinstall"
-    response.body.should == '/Users/matt/git/mirro/temp.xpi'
+    response.body.should == '/Users/matt/git/mirro/mirror.xpi'
   end
 
 end
