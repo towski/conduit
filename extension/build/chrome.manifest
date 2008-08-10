@@ -1,0 +1,4 @@
+content mirror jar:chrome/mirror.jar!/content/
+locale mirror en-US jar:chrome/mirror.jar!/locale/en-US/
+skin mirror classic/1.0 jar:chrome/mirror.jar!/skin/
+overlay	chrome://browser/content/browser.xul	chrome://mirror/content/firefoxOverlay.xul
