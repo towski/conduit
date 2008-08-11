@@ -1,0 +1,6 @@
+<h1>Available Mirrors:</h1>
+<ul>
+<% @mirrors.each do |mirror| %>
+	<li><strong><%= mirror.key %></strong> at <em><%= mirror.url %></em></li>
+<% end %>
+</ul>
