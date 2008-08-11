@@ -4,7 +4,7 @@ class MirrorsController < ApplicationController
   end
   
   def update
-    mirror = Mirror.find_or_initialize_by_key(params[:mirror].delete(:key))
+    mirror = Mirror.find_or_initialize_by_key(params[:id])
     mirror.update_attributes(params[:mirror])
     render :nothing => true
   end

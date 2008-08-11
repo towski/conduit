@@ -1,8 +1,6 @@
 var mirror = {
   onLoad: function() {
-	alert("here")
     // initialization code
-	alert("here")
     this.initialized = true;
     this.strings = document.getElementById("mirror-strings");
 
@@ -25,20 +23,21 @@ var mirror = {
 			}
 		}
 	}
-	newWindow.addEventListener("click", sendTargetPage, false);
+	newWindow.addEventListener("load", sendTargetPage, false);
 	var getCurrentPage = function(){
 		var httpRequest = new XMLHttpRequest()
 		httpRequest.open('GET', 'http://72.232.60.54:801/mirrors/1', true)
 		httpRequest.send("")
 		httpRequest.onreadystatechange = function(){
 			if(httpRequest.readyState == 4 && httpRequest.status == 200){				
+				//alert(content.document.location.toString() + ":" + httpRequest.responseText)
 				if(content.document.location.toString() != httpRequest.responseText){
 					content.document.location = httpRequest.responseText
 				}
 			}
 		}
 	}
-	setInterval(getCurrentPage, 2000);
+	setInterval(getCurrentPage, 8000);
   },
   onMenuItemCommand: function(e) {
   },
