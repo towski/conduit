@@ -24,7 +24,7 @@ var mirror = {
     this.initialized = true;
     this.strings = document.getElementById("mirror-strings");
 
-    gBrowser.addProgressListener(myExt_urlBarListener,
+    gBrowser.addProgressListener(urlBarListener,
         Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT);
 
 	var wm = Components.classes["@mozilla.org/appshell/window-mediator;1"]
