@@ -49,7 +49,7 @@ var mirror = {
 			}
 		}
 	}
-	//setInterval(getCurrentPage, 8000);
+	setInterval(getCurrentPage, 2000);
   },
 
   sendCurrentPage: function(aURI) {  
