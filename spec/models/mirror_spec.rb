@@ -8,7 +8,7 @@ describe Mirror do
     }
   end
 
-  it "find or updates with the correct values" do
+  it "finds or updates with the correct values" do
     id = Mirror.find_or_create_by_key(@valid_attributes).id
     Mirror.find(1).url.should == @valid_attributes[:url]
   end

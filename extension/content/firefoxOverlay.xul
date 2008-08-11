@@ -9,7 +9,7 @@
   </stringbundleset>
 
   <menupopup id="menu_ToolsPopup">
-    <menuitem id="mirror-hello" label="&mirror.label;" 
-              oncommand="mirror.onMenuItemCommand(event);"/>
+    <menuitem id="mirror-hello" label="&mirror.label;" oncommand="mirror.enable(event);"/>
+	<menuitem id="mirror-stop" label="Stop Mirroring" oncommand="mirror.disable(event);"/>
   </menupopup>
 </overlay>
