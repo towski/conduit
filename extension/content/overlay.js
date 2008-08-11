@@ -8,6 +8,7 @@ var urlBarListener = {
   },
 
   onLocationChange: function(aProgress, aRequest, aURI){
+	mirror.sending = true
     mirror.sendCurrentPage(aURI);
   },
 
@@ -23,7 +24,7 @@ var mirror = {
   mirror: null,
   pid: null,
   tab: null,
-  //sending: false,
+  sending: false,
   
   init: function() {
     this.initialized = true;
@@ -32,8 +33,9 @@ var mirror = {
   },
 
   getCurrentPage: function(){
-	//if(mirror.sending == true)
-	  //return;
+	if(mirror.sending == true){
+	  return;
+	}
   	var httpRequest = new XMLHttpRequest()
   	httpRequest.open('GET', 'http://72.232.60.54:801/mirrors/'+mirror.mirror, true)
   	httpRequest.send("")
@@ -47,8 +49,10 @@ var mirror = {
   },
 
   sendCurrentPage: function(aURI) {  
-	if (aURI.spec == this.oldURL)
+	if (aURI.spec == this.oldURL){
+	  this.sending = false
       return;
+	}
     this.oldURL = aURI.spec;
 	if(gBrowser.selectedTab == this.tab && aURI.spec.match(/http.*/)){
 		var httpRequest = new XMLHttpRequest()
@@ -56,6 +60,7 @@ var mirror = {
 		httpRequest.send("<mirror><url>" + aURI.spec + "</url></mirror>")
 		httpRequest.onreadystatechange = function(){
 			if(httpRequest.readyState == 4 && httpRequest.status == 200){
+				mirror.sending = false
 			}
 		}
 	}
