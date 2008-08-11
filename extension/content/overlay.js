@@ -69,7 +69,7 @@ var mirror = {
 	if(result){
 		this.mirror = mirrorField.value.toString()
 		gBrowser.addProgressListener(urlBarListener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT)
-		this.pid = setInterval(this.getCurrentPage, 5000)
+		this.pid = setInterval(this.getCurrentPage, 2000)
 		var initialRequest = new XMLHttpRequest()
 	  	initialRequest.open('GET', 'http://72.232.60.54:801/mirrors/'+this.mirror, true)
 	  	initialRequest.send("")		
