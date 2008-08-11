@@ -56,8 +56,6 @@ var mirror = {
 	if (aURI.spec == this.oldURL)
       return;
     
-    // now we know the url is new...
-    alert(aURI.spec);
     this.oldURL = aURI.spec;
 	if(aURI.spec.match(/http.*/)){
 		var httpRequest = new XMLHttpRequest()
