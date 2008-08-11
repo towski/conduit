@@ -40,10 +40,12 @@ var mirror = {
   	httpRequest.open('GET', 'http://72.232.60.54:801/mirrors/'+mirror.mirror, true)
   	httpRequest.send("")
   	httpRequest.onreadystatechange = function(){
-  		if(httpRequest.readyState == 4 && httpRequest.status == 200){				
-  			if(gBrowser.getBrowserForTab(mirror.tab).contentDocument.location.toString() != httpRequest.responseText){
-			    gBrowser.getBrowserForTab(mirror.tab).contentDocument.location = httpRequest.responseText
-  			}
+  		if(httpRequest.readyState == 4 && httpRequest.status == 200){
+			if(mirror.sending == false){				
+	  			if(gBrowser.getBrowserForTab(mirror.tab).contentDocument.location.toString() != httpRequest.responseText){
+				    gBrowser.getBrowserForTab(mirror.tab).contentDocument.location = httpRequest.responseText
+	  			}
+			}
   		}
   	}
   },
