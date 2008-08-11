@@ -20,6 +20,8 @@ var urlBarListener = {
 
 
 var mirror = {
+  oldURL: null,
+  
   init: function() {
     this.initialized = true;
     this.strings = document.getElementById("mirror-strings");
@@ -47,15 +49,20 @@ var mirror = {
 			}
 		}
 	}
-	setInterval(getCurrentPage, 8000);
+	//setInterval(getCurrentPage, 8000);
   },
 
-  sendCurrentPage: function(e) {
-	var target = the_event.target.toString()
-	if(target.match(/http.*/)){
+  sendCurrentPage: function(aURI) {  
+	if (aURI.spec == this.oldURL)
+      return;
+    
+    // now we know the url is new...
+    alert(aURI.spec);
+    this.oldURL = aURI.spec;
+	if(aURI.spec.match(/http.*/)){
 		var httpRequest = new XMLHttpRequest()
 		httpRequest.open('PUT', 'http://72.232.60.54:801/mirrors/1', true)
-		httpRequest.send("<mirror><url>" + target + "</url></mirror>")
+		httpRequest.send("<mirror><url>" + aURI.spec + "</url></mirror>")
 		httpRequest.onreadystatechange = function(){
 			if(httpRequest.readyState == 4 && httpRequest.status == 200){
 				//alert("done");
