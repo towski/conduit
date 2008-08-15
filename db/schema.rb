@@ -11,7 +11,7 @@
 
 ActiveRecord::Schema.define(:version => 20080812184017) do
 
-  create_table "mirrors", :force => true do |t|
+  create_table "conduits", :force => true do |t|
     t.string   "url"
     t.string   "key"
     t.datetime "created_at"

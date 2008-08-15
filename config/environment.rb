@@ -65,3 +65,7 @@ Rails::Initializer.run do |config|
   # Activate observers that should always be running
   # config.active_record.observers = :cacher, :garbage_collector
 end
+
+$HOST_NAME = "http://localhost:3000" if RAILS_ENV['development']
+$HOST_NAME = "http://localhost:3000" if RAILS_ENV['test']
+$HOST_NAME = "http://whateveryonedoes.com" if RAILS_ENV['production']

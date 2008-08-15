@@ -1,4 +1,4 @@
-content	mirror	content/
-locale	mirror	en-US	locale/en-US/
-skin	mirror	classic/1.0	skin/
-overlay	chrome://browser/content/browser.xul	chrome://mirror/content/firefoxOverlay.xul
+content	conduit	content/
+locale	conduit	en-US	locale/en-US/
+skin	conduit	classic/1.0	skin/
+overlay	chrome://browser/content/browser.xul	chrome://conduit/content/firefoxOverlay.xul

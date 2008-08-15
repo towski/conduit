@@ -1,6 +1,6 @@
-class CreateMirrors < ActiveRecord::Migration
+class CreateConduits < ActiveRecord::Migration
   def self.up
-    create_table :mirrors do |t|
+    create_table :conduits do |t|
       t.string :url
       t.string :key
       t.timestamps
@@ -8,6 +8,6 @@ class CreateMirrors < ActiveRecord::Migration
   end
 
   def self.down
-    drop_table :mirrors
+    drop_table :conduits
   end
 end

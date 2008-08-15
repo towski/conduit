@@ -9,9 +9,9 @@ build.sh script located in this folder.  For development
 you should do the following:
   1. Unzip the entire contents of this package to somewhere,
 	       e.g, c:\dev or /home/user/dev
-  2. Put the full path to the folder (e.g. c:\dev\mirror on
-     Windows, /home/user/dev/mirror on Linux) in a file named
-     mirror@bymatthew.com and copy that file to
+  2. Put the full path to the folder (e.g. c:\dev\conduit on
+     Windows, /home/user/dev/conduit on Linux) in a file named
+     conduit@bymatthew.com and copy that file to
      [your profile folder]\extensions\
   3. Restart Firefox.
 

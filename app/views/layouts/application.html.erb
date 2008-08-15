@@ -1,32 +1,11 @@
 <html>
 <head>
-	<style type="text/css">
-	body {
-		background: black url(images/conduitbackground.jpg) no-repeat scroll left bottom;
-		font-family: Verdana;
-		text-align:center;
-		margin:0;
-		padding:0;
-	}
-	
-	#center {
-		width: 900px;
-		margin:auto;
-		height: 100%;
-		background: white url(images/conduit.jpg) no-repeat scroll right top;
-	}
-	</style>
+	<%= stylesheet_link_tag conduits_path %>
+	<%= javascript_include_tag 'jquery-1.2.6' %>
 </head>
 <body>
 <div id="center">
-	<div id="content" style="float:left; margin-top: 100px; margin-left: 40px;">
 	<%= yield %>
-	</div>
-	
-	<div style="float:right;width: 300px; margin-right: 100px; margin-top: 300px">
-		<p>Conduit is a tool for browsing simultaneously with other humans. </p>
-		<p>It requires <%= link_to "Firefox", "http://getfirefox.com" %>, and the installation of <%= link_to "this", download_mirrors_path %> plugin</p>
-	</div>
 </div>
 </body>
 </html>

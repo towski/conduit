@@ -1,8 +1,8 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <RDF xmlns="http://www.w3.org/1999/02/22-rdf-syntax-ns#" xmlns:em="http://www.mozilla.org/2004/em-rdf#">
   <Description about="urn:mozilla:install-manifest">
-    <em:id>mirror@bymatthew.com</em:id>
-    <em:name>mirror</em:name>
+    <em:id>conduit@bymatthew.com</em:id>
+    <em:name>conduit</em:name>
     <em:version>1.0</em:version>
     <em:creator>Matthew Wastrodowski</em:creator>
     <em:targetApplication>
