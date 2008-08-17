@@ -1,8 +1,8 @@
 <div style="float:right;width: 300px; margin-right: 100px; margin-top: 300px">	
 <% form_for(@conduit || :conduit, :url => conduits_path ) do |form| %>
 	<%= form.error_messages %>
-	<%= form.text_field :key %>
-	<%= form.text_field :url, :value => "http://www.google.com" %>
-	<%= form.submit "create new conduit" %>
+	unique name for your conduit:<%= form.text_field :key, :style => "margin-top:10px" %><br/><br/>
+	initial url: <br/><%= form.text_field :url, :value => "http://www.google.com", :style => "margin-top:10px" %>
+	<%= form.submit "create new conduit", :style => "margin-top:10px" %>
 <% end %>
 </div>
