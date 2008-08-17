@@ -4,13 +4,20 @@
 <div style="float:right;width: 300px; margin-right: 100px; margin-top: 300px">
 	<p>is a tool for browsing simultaneously with other humans. </p>
 	<p>It requires <%= link_to "Firefox", "http://getfirefox.com" %>, and the installation of <%= link_to "this", download_conduits_path %> plugin</p>
-	<p>Once its installed, links will appear on this website. Just click on them to open a conduit.</p>
+	<p>Once installed, links will appear on this page. Just click them to open a conduit.</p>
 </div>
 
-<div style="clear:both">
-	<ul>
+<div style="clear:right;">
+	
+	<div style="margin-top:100px; margin-right:30px; float:right;">
+	<%= link_to("Create a new conduit", new_conduit_path) %>
+	</div>
+	
+	<table id="conduitList" style="display:none;">
 	<% @conduits.each do |conduit| %>
-		<li><strong><%= conduit.key %></strong> at <em><%= link_to conduit.url, '#', :onclick => 'talkToConduit(this)', :id => conduit.key %></em></li>
+		<tr><td style="text-align:right"><strong><%= conduit.key %></strong> at </td><td><em>
+		<%= link_to URI.parse(conduit.url).host, '#', :onclick => 'talkToConduit(this)', :id => conduit.key.gsub(/ /,'_') %></em></td></tr>
 	<% end %>
-	</ul>
+	</table>
+	<br/>
 </div>

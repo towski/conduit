@@ -1,0 +1,4 @@
+$(document).ready(function(){ 
+	talkToConduit($('#<%= @conduit.key.gsub(/ /,'_') %>')) 
+	document.location = '<%= conduits_path %>'
+})

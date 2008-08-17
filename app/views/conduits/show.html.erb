@@ -1,0 +1,2 @@
+<%= javascript_include_tag conduit_path(:id => @conduit.key) %>
+<strong><%= @conduit.key %></strong> at <em><%= link_to @conduit.url, '#', :id => @conduit.key.gsub(/ /,'_') %></em>

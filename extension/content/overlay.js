@@ -32,6 +32,7 @@ var conduit = {
     this.initialized = true
     this.strings = document.getElementById("mirror-strings")
 	gBrowser.removeProgressListener(urlBarListener)
+	globalCrud = "them"
   },
 
   getCurrentPage: function(){
@@ -39,7 +40,7 @@ var conduit = {
 	  return
 	}
   	var httpRequest = new XMLHttpRequest()
-  	httpRequest.open('GET', railsServer + '/conduits/'+conduit.key, true)
+  	httpRequest.open('GET', railsServer + '/conduits/'+conduit.key+'.json', true)
   	httpRequest.send("")
   	httpRequest.onreadystatechange = function(){
   		if(httpRequest.readyState == 4 && httpRequest.status == 200){
@@ -72,7 +73,7 @@ var conduit = {
 
   enable: function(key){
 	if(this.key){
-		alert("Sorry, only one conduit at a time (for the time being")
+		alert("Sorry, only one conduit at a time (for the time being)")
 		return
 	}
 	if(result){
@@ -80,7 +81,7 @@ var conduit = {
 		gBrowser.addProgressListener(urlBarListener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT)
 		this.pid = setInterval(this.getCurrentPage, 2000)
 		var initialRequest = new XMLHttpRequest()
-	  	initialRequest.open('GET', railsServer + '/conduits/'+this.key, true)
+	  	initialRequest.open('GET', railsServer + '/conduits/'+this.key+'.json', true)
 	  	initialRequest.send("")		
 	  	initialRequest.onreadystatechange = function(){
 	  		if(initialRequest.readyState == 4 && initialRequest.status == 200){
@@ -99,4 +100,5 @@ var conduit = {
   }
 }
 window.addEventListener("load", function(e) { conduit.init(e) }, false)
-document.addEventListener("activateConduit", function(e) { conduit.enable(e.target.getAttribute("conduit"))	 }, false, true)
+document.addEventListener("activateConduit", function(e) { conduit.enable(e.target.getAttribute("conduit")) }, false, true)
+document.addEventListener("showConduits", function(e) { e.target.setAttribute("style", 'display: block;') }, false, true)

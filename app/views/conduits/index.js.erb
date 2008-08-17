@@ -1,8 +1,5 @@
-function talkToConduit(self){
-	var element = document.createElement("ConduitDataElement")
-	element.setAttribute("conduit", $(self).attr('id'))
-	document.documentElement.appendChild(element)
-	var evt = document.createEvent("Events")
-	evt.initEvent("activateConduit", true, false)
-	element.dispatchEvent(evt)
-}
+$(document).ready(function(){
+  	var evt = document.createEvent("Events")
+	evt.initEvent("showConduits", true, false)
+	document.getElementById('conduitList').dispatchEvent(evt)
+})
