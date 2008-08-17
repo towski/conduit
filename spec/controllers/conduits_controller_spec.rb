@@ -29,16 +29,11 @@ describe ConduitsController do
   it "lists only the latest, which have been updated in the past hours" do
     past = 2.days.ago
     now = Time.now
-    latest = 2.seconds.from_now
     Time.stub!(:now).and_return past
     Conduit.create!
     Time.stub!(:now).and_return now
     Conduit.create!
-    Time.stub!(:now).and_return latest
-    latest_conduit = Conduit.create!
     get :index
     assigns(:conduits).size.should == 1
-    assigns(:latest_conduit).should == latest_conduit
   end
-
 end

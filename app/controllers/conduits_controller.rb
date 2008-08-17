@@ -1,7 +1,6 @@
 class ConduitsController < ApplicationController
   def index
     @conduits = Conduit.recent
-    @latest_conduit = @conduits.shift
   end
 
   def update

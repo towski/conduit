@@ -1,6 +1,4 @@
-Latest Conduit
-<% total = [] %>
-<strong>
-<% @latest_conduit.url.each_char { |s| total << "<br/>" + s } %>
-<%= link_to total.join, '#', :onclick => 'talkToConduit(this)', :id => @latest_conduit.key, :style => "text-decoration:none" %>
-</strong>
+Latest Conduit:
+<p>
+<%= link_to @latest_conduit.url, '#', :onclick => 'talkToConduit(this)', :id => @latest_conduit.key, :style => "text-decoration:none" %>
+</p>
