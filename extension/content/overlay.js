@@ -32,7 +32,6 @@ var conduit = {
     this.initialized = true
     this.strings = document.getElementById("mirror-strings")
 	gBrowser.removeProgressListener(urlBarListener)
-	globalCrud = "them"
   },
 
   getCurrentPage: function(){
