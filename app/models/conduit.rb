@@ -5,6 +5,13 @@ class Conduit < ActiveRecord::Base
   before_create :set_url
   
   def set_url
-    self.url = "http://www.google.com"
+    self.url = "http://www.google.com/" unless url
+  end
+  
+  def url=(new_url)
+    if URI.parse(new_url).path.blank?
+      new_url += "/"
+    end
+    self[:url] = new_url
   end
 end
