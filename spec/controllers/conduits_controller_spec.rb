@@ -3,7 +3,7 @@ require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 describe ConduitsController do
 
   it "updates with a url and key" do
-    put :update, :conduit => {:url => "http://bymatthew.com", :key => "rabble"}
+    put :update, :id => "rabble", :conduit => {:url => "http://bymatthew.com"}
     response.body.should be_blank
     response.should be_success
     Conduit.find_by_key("rabble").should_not be_nil
@@ -42,9 +42,9 @@ describe ConduitsController do
     past = 2.days.ago
     now = Time.now
     Time.stub!(:now).and_return past
-    Conduit.create!
+    Conduit.create! :key => "a"
     Time.stub!(:now).and_return now
-    Conduit.create!
+    Conduit.create! :key => "b"
     get :index
     assigns(:conduits).size.should == 1
   end
@@ -55,7 +55,7 @@ describe ConduitsController do
   end
   
   it "should redirect to update when create" do
-    post :create
+    post :create, :conduit => {:key => "AYE"}
     response.should be_redirect
   end
 end

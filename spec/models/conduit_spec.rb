@@ -7,9 +7,9 @@ describe Conduit do
     }
   end
 
-  it "finds or updates with the correct values" do
+  it "finds or updates with the default values" do
     id = Conduit.find_or_create_by_key(@valid_attributes).id
-    Conduit.find(1).url.should == "http://www.google.com"
+    Conduit.find(1).url.should == "http://www.google.com/"
   end
   
   it "must have a unique key name" do
@@ -27,5 +27,10 @@ describe Conduit do
       Conduit.create :key => i
     end
     Conduit.recent.size.should == 8
+  end
+  
+  it "forces passed urls to have a / at the end, if no path" do
+    conduit = Conduit.create :key => "hey", :url => "http://www.kanook.com"
+    conduit.url.should == "http://www.kanook.com/"
   end
 end
