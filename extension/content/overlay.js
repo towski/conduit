@@ -1,5 +1,5 @@
-var railsServer = 'http://72.232.60.54:801'
-var railsServer = 'http://localhost:3000'
+var railsServer = 'http://72.232.60.54'
+//var railsServer = 'http://localhost:3000'
 var urlBarListener = {
   QueryInterface: function(aIID){
    if (aIID.equals(Components.interfaces.nsIWebProgressListener) ||
@@ -75,7 +75,6 @@ var conduit = {
 		alert("Sorry, only one conduit at a time (for the time being)")
 		return
 	}
-	if(result){
 		this.key = key
 		gBrowser.addProgressListener(urlBarListener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT)
 		this.pid = setInterval(this.getCurrentPage, 2000)
@@ -89,7 +88,6 @@ var conduit = {
 				conduit.tab.addEventListener("TabClose", function(){ conduit.disable() }, false)
 			}
 		}
-	}
   },
 
   disable: function(){
