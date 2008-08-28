@@ -4,6 +4,9 @@ ENV["RAILS_ENV"] = "test"
 require File.expand_path(File.dirname(__FILE__) + "/../config/environment")
 require 'spec'
 require 'spec/rails'
+require 'model_stubbing'
+require File.dirname(__FILE__) + "/stubs"
+require 'ruby-debug'
 
 Spec::Runner.configure do |config|
   # If you're not using ActiveRecord you should remove these
@@ -12,6 +15,11 @@ Spec::Runner.configure do |config|
   config.use_transactional_fixtures = true
   config.use_instantiated_fixtures  = false
   config.fixture_path = RAILS_ROOT + '/spec/fixtures/'
+
+  def login(user)
+   @user = user ? users(user) : nil
+    controller.stub!(:current_user).and_return(@user)
+  end
 
   # == Fixtures
   #

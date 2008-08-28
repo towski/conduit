@@ -1,6 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Conduit do
+  define_models 
+  
   before(:each) do
     @valid_attributes = {
       :key => 1
@@ -9,7 +11,7 @@ describe Conduit do
 
   it "finds or updates with the default values" do
     id = Conduit.find_or_create_by_key(@valid_attributes).id
-    Conduit.find(1).url.should == "http://www.google.com/"
+    Conduit.find(id).url.should == "http://www.google.com/"
   end
   
   it "must have a unique key name" do
@@ -32,5 +34,17 @@ describe Conduit do
   it "forces passed urls to have a / at the end, if no path" do
     conduit = Conduit.create :key => "hey", :url => "http://www.kanook.com"
     conduit.url.should == "http://www.kanook.com/"
+  end
+  
+  it "optionally belongs to a user" do
+    conduit = Conduit.create :key => "BOOZE"
+    conduit.user = users(:default)
+    conduit.save!
+  end
+  
+  it "can have watchers" do
+    conduit = Conduit.create :key => "BOOZE"
+    conduit.watchers << users(:default)
+    conduit.reload.watchers.should == [users(:default)]
   end
 end

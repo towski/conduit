@@ -1,5 +1,8 @@
-<%= javascript_include_tag conduits_path %>
+<% content_for :css do %>
+<%= stylesheet_link_tag conduits_path %>
+<% end %>
 
+<%= javascript_include_tag conduits_path %>
 
 <div style="float:right;width: 300px; margin-right: 100px; margin-top: 300px">
 	<p>is a tool for browsing simultaneously with other humans. </p>

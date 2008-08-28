@@ -1,8 +1,18 @@
 <div style="float:right;width: 300px; margin-right: 100px; margin-top: 300px">	
 <% form_for(@conduit || :conduit, :url => conduits_path ) do |form| %>
 	<%= form.error_messages %>
-	unique name for your conduit:<%= form.text_field :key, :style => "margin-top:10px" %><br/><br/>
-	initial url: <br/><%= form.text_field :url, :value => "http://www.google.com", :style => "margin-top:10px" %>
+	<ul style="list-style:none">
+	<li>unique name for your conduit:</li>
+	<li><%= form.text_field :key, :style => "margin-top:10px" %></li>
+	<li>initial url:</li>
+	<li><%= form.text_field :url, :value => "http://www.google.com", :style => "margin-top:10px" %></li>
+	<% if current_user %>
+		<li>private?: <%= form.checkbox :private %></li>
+		<li>allow these users (ctrl-click for multiple): </li>
+		<li><%= collection_select_multiple_users @conduit, :watchers %></li>
+	<% else %>
+		<li><%= link_to "Create", new_user_path %> an account to make private conduits</li>
+	<% end %>
 	<%= form.submit "create new conduit", :style => "margin-top:10px" %>
 <% end %>
 </div>

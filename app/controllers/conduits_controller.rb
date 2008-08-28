@@ -13,21 +13,31 @@ class ConduitsController < ApplicationController
   end
   
   def update
-    @conduit = Conduit.find_or_initialize_by_key(params[:id].gsub(/_/,' '))
+    @conduit = Conduit.find_by_key(params[:id].gsub(/_/,' '))
     @conduit.update_attributes(params[:conduit])
     render :nothing => true
   end
   
   def show
-    @conduit = Conduit.find_or_create_by_key(params[:id].gsub(/_/,' '))
+    @conduit = Conduit.find_by_key(params[:id].gsub(/_/,' '))
     respond_to do |format|
-      format.html 
-      format.json { render :json => @conduit.url, :layout => false }
-      format.js
+      if @conduit.private and current_user != @conduit.user and not @conduit.watchers.include?(current_user)
+        format.html { render :status => :not_authorized }
+      else
+        format.html 
+        format.json { render :json => @conduit.url, :layout => false }
+        format.js
+      end
     end
   end
   
   def download
     render :file => RAILS_ROOT+"/extension/conduit.xpi", :content_type => "application/x-xpinstall"
+  end
+  
+  protected
+  
+  def authorized?
+    false
   end
 end

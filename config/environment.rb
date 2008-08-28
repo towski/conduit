@@ -66,6 +66,8 @@ Rails::Initializer.run do |config|
   # config.active_record.observers = :cacher, :garbage_collector
 end
 
+require 'authenticated_system'
+
 $HOST_NAME = "http://localhost:3000" if RAILS_ENV['development']
 $HOST_NAME = "http://localhost:3000" if RAILS_ENV['test']
 $HOST_NAME = "http://whateveryonedoes.com" if RAILS_ENV['production']

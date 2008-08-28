@@ -3,6 +3,8 @@ class Conduit < ActiveRecord::Base
   validates_uniqueness_of :key
   validates_presence_of :key
   before_create :set_url
+  belongs_to :user
+  has_and_belongs_to_many :watchers, :class_name => "User"
   
   def set_url
     self.url = "http://www.google.com/" unless url

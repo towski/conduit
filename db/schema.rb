@@ -9,11 +9,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20080812184017) do
+ActiveRecord::Schema.define(:version => 20080828083001) do
 
   create_table "conduits", :force => true do |t|
     t.string   "url"
     t.string   "key"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.boolean  "private"
+    t.integer  "user_id"
+  end
+
+  create_table "conduits_users", :id => false, :force => true do |t|
+    t.integer  "user_id"
+    t.integer  "conduit_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
