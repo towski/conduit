@@ -1,9 +1,8 @@
 require File.expand_path(File.dirname(__FILE__) + '/../spec_helper')
 
 describe Conduit do
-  define_models 
-  
-  before(:each) do
+  before(:all) do
+    @user = User.create!(:login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69')
     @valid_attributes = {
       :key => 1
     }
@@ -38,13 +37,13 @@ describe Conduit do
   
   it "optionally belongs to a user" do
     conduit = Conduit.create :key => "BOOZE"
-    conduit.user = users(:default)
+    conduit.user = @user
     conduit.save!
   end
   
   it "can have watchers" do
     conduit = Conduit.create :key => "BOOZE"
-    conduit.watchers << users(:default)
-    conduit.reload.watchers.should == [users(:default)]
+    conduit.watchers << @user
+    conduit.reload.watchers.should == [@user]
   end
 end

@@ -217,7 +217,7 @@ describe User do
     users(:quentin).remember_token_expires_at.should_not be_nil
     users(:quentin).remember_token_expires_at.between?(before, after).should be_true
   end
-
+  
 protected
   def create_user(options = {})
     record = User.new({ :login => 'quire', :email => 'quire@example.com', :password => 'quire69', :password_confirmation => 'quire69' }.merge(options))

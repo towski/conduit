@@ -4,6 +4,7 @@ class Conduit < ActiveRecord::Base
   validates_presence_of :key
   before_create :set_url
   belongs_to :user
+  has_many :urls
   has_and_belongs_to_many :watchers, :class_name => "User"
   
   def set_url
