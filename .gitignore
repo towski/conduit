@@ -2,3 +2,4 @@ db/*.sqlite3
 log/production.log
 log/*.log
 extension/mirror.xpi
+conduit.xpi

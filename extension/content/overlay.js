@@ -1,5 +1,5 @@
-var railsServer = 'http://72.232.60.54'
-//var railsServer = 'http://localhost:3000'
+//var railsServer = 'http://72.232.60.54'
+var railsServer = 'http://localhost:3000'
 var urlBarListener = {
   QueryInterface: function(aIID){
    if (aIID.equals(Components.interfaces.nsIWebProgressListener) ||
@@ -60,8 +60,8 @@ var conduit = {
     this.oldURL = aURI.spec
 	if(gBrowser.selectedTab == this.tab && aURI.spec.match(/http.*/)){
 		var httpRequest = new XMLHttpRequest()
-		httpRequest.open('PUT', railsServer + '/conduits/'+this.key, true)
-		httpRequest.send("<conduit><url>" + aURI.spec + "</url></conduit>")
+		httpRequest.open('POST', railsServer + '/users/'+this.key+'/urls/', true)
+		httpRequest.send("<url><url>" + aURI.spec + "</url></url>")
 		httpRequest.onreadystatechange = function(){
 			if(httpRequest.readyState == 4 && httpRequest.status == 200){
 				conduit.sending = false
@@ -77,7 +77,7 @@ var conduit = {
 	}
 		this.key = key
 		gBrowser.addProgressListener(urlBarListener, Components.interfaces.nsIWebProgress.NOTIFY_STATE_DOCUMENT)
-		this.pid = setInterval(this.getCurrentPage, 2000)
+		//this.pid = setInterval(this.getCurrentPage, 2000)
 		var initialRequest = new XMLHttpRequest()
 	  	initialRequest.open('GET', railsServer + '/conduits/'+this.key+'.json', true)
 	  	initialRequest.send("")		
@@ -93,9 +93,9 @@ var conduit = {
   disable: function(){
 	this.key = null
 	gBrowser.removeProgressListener(urlBarListener)
-	clearInterval(this.pid)
+	//clearInterval(this.pid)
   }
 }
 window.addEventListener("load", function(e) { conduit.init(e) }, false)
 document.addEventListener("activateConduit", function(e) { conduit.enable(e.target.getAttribute("conduit")) }, false, true)
-document.addEventListener("showConduits", function(e) { e.target.setAttribute("style", 'display: block;') }, false, true)
+//document.addEventListener("showConduits", function(e) { e.target.setAttribute("style", 'display: block;') }, false, true)
