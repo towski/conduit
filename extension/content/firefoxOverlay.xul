@@ -1,15 +1,5 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<?xml-stylesheet href="chrome://conduit/skin/overlay.css" type="text/css"?>
 <!DOCTYPE overlay SYSTEM "chrome://conduit/locale/conduit.dtd">
-<overlay id="conduit-overlay"
-         xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
+<overlay id="conduit-overlay" xmlns="http://www.mozilla.org/keymaster/gatekeeper/there.is.only.xul">
   <script src="overlay.js"/>
-  <stringbundleset id="stringbundleset">
-    <stringbundle id="conduit-strings" src="chrome://conduit/locale/conduit.properties"/>
-  </stringbundleset>
-
-  <menupopup id="menu_ToolsPopup">
-    <menuitem id="conduit-hello" label="&conduit.label;" oncommand="conduit.enable(event);"/>
-	<menuitem id="conduit-stop" label="Stop Conduiting" oncommand="conduit.disable(event);"/>
-  </menupopup>
 </overlay>
